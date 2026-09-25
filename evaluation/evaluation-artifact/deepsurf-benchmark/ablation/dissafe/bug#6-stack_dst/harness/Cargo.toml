@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "stack_dst_fuzz_4066434920238341334"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "stack_dst_fuzz_4066434920238341334"
+path = "src/stack_dst_fuzz_4066434920238341334.rs"
+
+[dependencies]
+stack_dst = { path = "../../../../deepSURF/dataset/erasan_crates/stack_dst-0.6.0" }
+global_data = { path = "../../../../deepSURF/code/global_data" }

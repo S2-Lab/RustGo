@@ -1,0 +1,94 @@
+[package]
+name = "gimli"
+version = "0.26.2"
+categories = ["development-tools::debugging", "development-tools::profiling", "parser-implementations"]
+description = "A library for reading and writing the DWARF debugging format."
+documentation = "https://docs.rs/gimli"
+edition = "2018"
+exclude = ["/releases/*", "/.github"]
+keywords = ["DWARF", "debug", "ELF", "eh_frame"]
+license = "MIT OR Apache-2.0"
+readme = "./README.md"
+repository = "https://github.com/gimli-rs/gimli"
+
+[dependencies]
+fallible-iterator = { version = "0.2.0", default-features = false, optional = true }
+indexmap = { version = "1.0.2", optional = true }
+stable_deref_trait = { version = "1.1.0", default-features = false, optional = true }
+
+# Internal feature, only used when building as part of libstd, not part of the
+# stable interface of this crate.
+core = { version = '1.0.0', optional = true, package = 'rustc-std-workspace-core' }
+alloc = { version = '1.0.0', optional = true, package = 'rustc-std-workspace-alloc' }
+compiler_builtins = { version = '0.1.2', optional = true }
+
+smallvec = "0.6.6" #2019_0009
+string-interner = "0.7.0" #2019_0023
+http="=0.1.19" #2019_0034
+cbox ="=0.3.0" #2020_0005
+simple-slab = "=0.3.2" #2020_0039
+qwutils = "=0.3.0" #2021_0018
+toodee = "0.2.0" #2021_0028
+nano_arena = "=0.5.0" #2021_0031
+stack_dst = "=0.6.0" #2021_0033
+endian_trait = "=0.6.0" #2021_0039
+insert_many = "0.1.1" #2021_0042
+stackvector = "=1.1.1" #2021_0048
+through = { git = "https://github.com/gretchenfrage/through"} #2021_0049
+algorithmica = "=0.1.8" #2021_0053
+secp256k1 = "=0.22.0" #2022_0070
+byteorder = "=1.4.3" #handling
+libc = "=0.2.126" #handling
+once_cell = "=1.10.0"
+cc = "=1.0.72"
+memchr = "=2.5.0"
+lazy_static = "1.4.0" 
+
+
+
+[dev-dependencies]
+crossbeam = "0.8"
+getopts = "0.2"
+memmap2 = "0.5.5"
+num_cpus = "1"
+object = { version = "0.29.0", features = ["wasm"] }
+rayon = "1.0"
+regex = "1"
+test-assembler = "0.1.3"
+typed-arena = "2"
+
+[features]
+read-core = []
+read = ["read-core"]
+endian-reader = ["read", "stable_deref_trait"]
+write = ["indexmap"]
+std = ["fallible-iterator/std", "stable_deref_trait/std"]
+default = ["read", "write", "std", "fallible-iterator", "endian-reader"]
+
+# Internal feature, only used when building as part of libstd, not part of the
+# stable interface of this crate.
+rustc-dep-of-std = ['core', 'alloc', 'compiler_builtins']
+
+[profile.test]
+split-debuginfo = 'packed'
+
+[profile.bench]
+debug = true
+codegen-units = 1
+split-debuginfo = 'packed'
+
+[[example]]
+name = "simple"
+required-features = ["read"]
+
+[[example]]
+name = "simple_line"
+required-features = ["read"]
+
+[[example]]
+name = "dwarfdump"
+required-features = ["read", "std"]
+
+[[example]]
+name = "dwarf-validate"
+required-features = ["read", "std"]

@@ -1,0 +1,104 @@
+[package]
+name = "serde_json"
+version = "1.0.69" # remember to update html_root_url
+authors = ["Erick Tryzelaar <erick.tryzelaar@gmail.com>", "David Tolnay <dtolnay@gmail.com>"]
+license = "MIT OR Apache-2.0"
+description = "A JSON serialization file format"
+repository = "https://github.com/serde-rs/json"
+documentation = "https://docs.serde.rs/serde_json/"
+keywords = ["json", "serde", "serialization"]
+categories = ["encoding"]
+readme = "README.md"
+include = ["build.rs", "src/**/*.rs", "README.md", "LICENSE-APACHE", "LICENSE-MIT"]
+edition = "2018"
+rust-version = "1.31"
+
+[dependencies]
+serde = { version = "1.0.100", default-features = false }
+indexmap = { version = "1.5", optional = true }
+itoa = { version = "0.4.3", default-features = false }
+ryu = "1.0"
+smallvec = "0.6.6" #2019_0009
+string-interner = "0.7.0" #2019_0023
+http="=0.1.19" #2019_0034
+cbox ="=0.3.0" #2020_0005
+simple-slab = "=0.3.2" #2020_0039
+qwutils = "=0.3.0" #2021_0018
+toodee = "0.2.0" #2021_0028
+nano_arena = "=0.5.0" #2021_0031
+stack_dst = "=0.6.0" #2021_0033
+endian_trait = "=0.6.0" #2021_0039
+insert_many = "0.1.1" #2021_0042
+stackvector = "=1.1.1" #2021_0048
+through = { git = "https://github.com/gretchenfrage/through"} #2021_0049
+algorithmica = "=0.1.8" #2021_0053
+secp256k1 = "=0.22.0" #2022_0070
+byteorder = "=1.4.3" #handling
+libc = "=0.2.126" #handling
+once_cell = "=1.10.0"
+cc = "=1.0.72"
+memchr = "=2.5.0"
+lazy_static = "1.4.0" 
+
+[package.metadata.docs.rs]
+features = ["raw_value", "unbounded_depth"]
+targets = ["x86_64-unknown-linux-gnu"]
+rustdoc-args = ["--cfg", "docsrs"]
+
+[package.metadata.playground]
+features = ["raw_value"]
+
+
+### FEATURES #################################################################
+
+[features]
+default = ["std"]
+
+std = ["serde/std"]
+
+# Provide integration for heap-allocated collections without depending on the
+# rest of the Rust standard library.
+# NOTE: Disabling both `std` *and* `alloc` features is not supported yet.
+# Available on Rust 1.36+.
+alloc = ["serde/alloc"]
+
+# Make serde_json::Map use a representation which maintains insertion order.
+# This allows data to be read into a Value and written back to a JSON string
+# while preserving the order of map keys in the input.
+preserve_order = ["indexmap"]
+
+# Use sufficient precision when parsing fixed precision floats from JSON to
+# ensure that they maintain accuracy when round-tripped through JSON. This comes
+# at an approximately 2x performance cost for parsing floats compared to the
+# default best-effort precision.
+#
+# Unlike arbitrary_precision, this feature makes f64 -> JSON -> f64 produce
+# output identical to the input.
+float_roundtrip = []
+
+# Use an arbitrary precision number representation for serde_json::Number. This
+# allows JSON numbers of arbitrary size/precision to be read into a Number and
+# written back to a JSON string without loss of precision.
+#
+# Unlike float_roundtrip, this feature makes JSON -> serde_json::Number -> JSON
+# produce output identical to the input.
+arbitrary_precision = []
+
+# Provide a RawValue type that can hold unprocessed JSON during deserialization.
+raw_value = []
+
+# Provide a method disable_recursion_limit to parse arbitrarily deep JSON
+# structures without any consideration for overflowing the stack. When using
+# this feature, you will want to provide some other way to protect against stack
+# overflows, such as by wrapping your Deserializer in the dynamically growing
+# stack adapter provided by the serde_stacker crate. Additionally you will need
+# to be careful around other recursive operations on the parsed result which may
+# overflow the stack after deserialization has completed, including, but not
+# limited to, Display and Debug and Drop impls.
+unbounded_depth = []
+
+[[bin]]
+name = "fuzz-target"
+path = "src/fuzz-target.rs"
+test = false
+doc = false

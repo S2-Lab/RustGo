@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -uo pipefail
+
+VARIANT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export VARIANT_NAME="dissafe"
+export VARIANT_DIR
+export RUN_SUBDIR="${RUN_SUBDIR:-harness}"
+export EVAL_SCRIPT_NAME="${EVAL_SCRIPT_NAME:-fuzz-dissafe.sh}"
+
+source "$VARIANT_DIR/../run-deepsurf-ablation.sh"

@@ -1,0 +1,20 @@
+
+[package]
+name = "quick-xml-fuzz"
+version = "0.0.1"
+authors = ["Automatically generated"]
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies.quick-xml]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fuzz-target"
+path = "fuzz_targets/fuzz_target.rs"

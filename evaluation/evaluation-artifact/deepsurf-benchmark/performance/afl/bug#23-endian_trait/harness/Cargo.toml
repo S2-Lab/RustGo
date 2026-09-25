@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "endian_trait_fuzz_7198618591775168066"
+version = "0.1.0"
+edition = "2018"
+
+[[bin]]
+name = "endian_trait_fuzz_7198618591775168066"
+path = "src/endian_trait_fuzz_7198618591775168066.rs"
+
+[dependencies]
+endian_trait = { path = "../../../../deepSURF/dataset/erasan_crates/endian_trait-0.6.0" }
+global_data = { path = "../../../../deepSURF/code/global_data" }

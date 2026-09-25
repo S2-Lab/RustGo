@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "pnet_packet_fuzz_2914112639123794018"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "pnet_packet_fuzz_2914112639123794018"
+path = "src/pnet_packet_fuzz_2914112639123794018.rs"
+
+[dependencies]
+pnet_packet = { path = "../../../../deepSURF/dataset/erasan_crates/pnet_packet-0.26.0" }
+global_data = { path = "../../../../deepSURF/code/global_data" }

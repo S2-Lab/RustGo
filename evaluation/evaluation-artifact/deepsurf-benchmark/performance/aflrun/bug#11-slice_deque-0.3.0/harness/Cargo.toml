@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "slice-deque_fuzz_16075554750031233132"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "slice-deque_fuzz_16075554750031233132"
+path = "src/slice-deque_fuzz_16075554750031233132.rs"
+
+[dependencies]
+slice-deque = { path = "../../../../deepSURF/dataset/erasan_crates/slice-deque-0.3.0" }
+global_data = { path = "../../../../deepSURF/code/global_data" }

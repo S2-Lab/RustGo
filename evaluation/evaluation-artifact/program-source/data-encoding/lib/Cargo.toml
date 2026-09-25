@@ -1,0 +1,49 @@
+[package]
+name = "data-encoding"
+version = "2.2.0"
+authors = ["Julien Cretin <git@ia0.eu>"]
+license = "MIT"
+edition = "2018"
+keywords = ["no_std", "base64", "base32", "hex"]
+categories = ["encoding", "no-std"]
+readme = "README.md"
+repository = "https://github.com/ia0/data-encoding"
+documentation = "https://docs.rs/data-encoding"
+description = "Efficient and customizable data-encoding functions like base64, base32, and hex"
+include = ["Cargo.toml", "LICENSE", "README.md", "src/lib.rs"]
+
+[features]
+default = ["std"]
+alloc = []
+std = ["alloc"]
+
+[badges]
+appveyor = { repository = "ia0/data-encoding" }
+coveralls = { repository = "ia0/data-encoding" }
+is-it-maintained-issue-resolution = { repository = "ia0/data-encoding" }
+is-it-maintained-open-issues = { repository = "ia0/data-encoding" }
+maintenance = { status = "passively-maintained" }
+travis-ci = { repository = "ia0/data-encoding" }
+
+[dependencies]
+smallvec = "0.6.6" #2019_0009
+string-interner = "0.7.0" #2019_0023
+http="=0.1.19" #2019_0034
+cbox ="=0.3.0" #2020_0005
+simple-slab = "=0.3.2" #2020_0039
+qwutils = "=0.3.0" #2021_0018
+toodee = "0.2.0" #2021_0028
+nano_arena = "=0.5.0" #2021_0031
+stack_dst = "=0.6.0" #2021_0033
+endian_trait = "=0.6.0" #2021_0039
+insert_many = "0.1.1" #2021_0042
+stackvector = "=1.1.1" #2021_0048
+through = { git = "https://github.com/gretchenfrage/through"} #2021_0049
+algorithmica = "=0.1.8" #2021_0053
+secp256k1 = "=0.22.0" #2022_0070
+byteorder = "=1.4.3" #handling
+libc = "=0.2.126" #handling
+once_cell = "=1.10.0"
+cc = "=1.0.72"
+memchr = "=2.5.0"
+lazy_static = "1.4.0" 

@@ -1,0 +1,57 @@
+[package]
+
+name = "httparse"
+version = "1.8.0"
+authors = ["Sean McArthur <sean@seanmonstar.com>"]
+license = "MIT/Apache-2.0"
+description = "A tiny, safe, speedy, zero-copy HTTP/1.x parser."
+repository = "https://github.com/seanmonstar/httparse"
+documentation = "https://docs.rs/httparse"
+readme = "README.md"
+keywords = ["http", "parser", "no_std"]
+categories = ["network-programming", "no-std", "parser-implementations", "web-programming"]
+edition = "2018"
+build = "build.rs"
+
+[features]
+default = ["std"]
+std = []
+
+[dev-dependencies]
+criterion = "0.3.5"
+
+[dependencies]
+smallvec = "0.6.6" #2019_0009
+string-interner = "0.7.0" #2019_0023
+http="=0.1.19" #2019_0034
+cbox ="=0.3.0" #2020_0005
+simple-slab = "=0.3.2" #2020_0039
+qwutils = "=0.3.0" #2021_0018
+toodee = "0.2.0" #2021_0028
+nano_arena = "=0.5.0" #2021_0031
+stack_dst = "=0.6.0" #2021_0033
+endian_trait = "=0.6.0" #2021_0039
+insert_many = "0.1.1" #2021_0042
+stackvector = "=1.1.1" #2021_0048
+through = { git = "https://github.com/gretchenfrage/through"} #2021_0049
+algorithmica = "=0.1.8" #2021_0053
+secp256k1 = "=0.22.0" #2022_0070
+byteorder = "=1.4.3" #handling
+libc = "=0.2.126" #handling
+once_cell = "=1.10.0"
+cc = "=1.0.72"
+memchr = "=2.5.0"
+lazy_static = "1.4.0" 
+
+
+[lib]
+bench = false
+
+[[bench]]
+name = "parse"
+harness = false
+
+[profile.bench]
+lto = true
+codegen-units = 1
+opt-level = 3

@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "simple-slab_fuzz_12997837067481994914"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "simple-slab_fuzz_12997837067481994914"
+path = "src/simple-slab_fuzz_12997837067481994914.rs"
+
+[dependencies]
+simple-slab = { path = "../../../../deepSURF/dataset/erasan_crates/simple-slab-0.3.2" }
+global_data = { path = "../../../../deepSURF/code/global_data" }

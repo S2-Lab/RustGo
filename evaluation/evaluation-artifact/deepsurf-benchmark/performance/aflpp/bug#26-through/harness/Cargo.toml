@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "through_fuzz_15186921809571911366"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "through_fuzz_15186921809571911366"
+path = "src/through_fuzz_15186921809571911366.rs"
+
+[dependencies]
+through = { path = "../../../../deepSURF/dataset/erasan_crates/through-0.1.0" }
+global_data = { path = "../../../../deepSURF/code/global_data" }

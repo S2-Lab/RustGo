@@ -1,0 +1,52 @@
+[package]
+name = "serde_yaml"
+version = "0.8.19" # remember to update html_root_url, and readme for major versions
+authors = ["David Tolnay <dtolnay@gmail.com>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+description = "YAML support for Serde"
+repository = "https://github.com/dtolnay/serde-yaml"
+documentation = "https://docs.rs/serde_yaml/"
+readme = "README.md"
+keywords = ["yaml", "serde"]
+
+[dependencies]
+dtoa = "0.4"
+indexmap = "1.5"
+serde = "1.0.69"
+yaml-rust = "0.4.5"
+smallvec = "0.6.6" #2019_0009
+string-interner = "0.7.0" #2019_0023
+http="=0.1.19" #2019_0034
+cbox ="=0.3.0" #2020_0005
+simple-slab = "=0.3.2" #2020_0039
+qwutils = "=0.3.0" #2021_0018
+toodee = "0.2.0" #2021_0028
+nano_arena = "=0.5.0" #2021_0031
+stack_dst = "=0.6.0" #2021_0033
+endian_trait = "=0.6.0" #2021_0039
+insert_many = "0.1.1" #2021_0042
+stackvector = "=1.1.1" #2021_0048
+through = { git = "https://github.com/gretchenfrage/through"} #2021_0049
+algorithmica = "=0.1.8" #2021_0053
+secp256k1 = "=0.22.0" #2022_0070
+byteorder = "=1.4.3" #handling
+libc = "=0.2.126" #handling
+once_cell = "=1.10.0"
+cc = "=1.0.72"
+memchr = "=2.5.0"
+lazy_static = "1.4.0" 
+
+[dev-dependencies]
+anyhow = "1.0"
+indoc = "1.0"
+serde_derive = "1.0"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[[bin]]
+name = "fuzz-target"
+path = "src/fuzz-target.rs"
+test = false
+doc = false

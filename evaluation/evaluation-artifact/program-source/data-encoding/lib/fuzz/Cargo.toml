@@ -1,0 +1,26 @@
+[package]
+name = "data-encoding-fuzz"
+version = "0.0.1"
+authors = ["Automatically generated"]
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies.data-encoding]
+path = ".."
+# [dependencies.libfuzzer-sys]
+# git = "https://github.com/rust-fuzz/libfuzzer-sys.git"
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "round_trip"
+path = "fuzz_targets/round_trip.rs"
+
+[[bin]]
+name = "fuzz-target"
+path = "fuzz_targets/fuzz-target.rs"
+

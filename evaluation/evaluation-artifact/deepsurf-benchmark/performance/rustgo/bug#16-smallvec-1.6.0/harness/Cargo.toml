@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "smallvec_fuzz_5912937994556700025"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "smallvec_fuzz_5912937994556700025"
+path = "src/smallvec_fuzz_5912937994556700025.rs"
+
+[dependencies]
+smallvec = { path = "../../../../deepSURF/dataset/erasan_crates/smallvec-1.6.0" }
+global_data = { path = "../../../../deepSURF/code/global_data" }

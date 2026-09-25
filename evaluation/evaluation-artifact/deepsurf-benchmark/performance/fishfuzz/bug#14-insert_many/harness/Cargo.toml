@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "insert_many_fuzz_14351955148426915674"
+version = "0.1.0"
+edition = "2018"
+
+[[bin]]
+name = "insert_many_fuzz_14351955148426915674"
+path = "src/insert_many_fuzz_14351955148426915674.rs"
+
+[dependencies]
+insert_many = { path = "../../../../deepSURF/dataset/erasan_crates/insert_many-0.1.1" }
+global_data = { path = "../../../../deepSURF/code/global_data" }

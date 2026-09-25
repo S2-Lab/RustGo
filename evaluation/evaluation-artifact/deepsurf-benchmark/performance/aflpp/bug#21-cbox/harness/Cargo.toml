@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "cbox_fuzz_2852943083114743847"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "cbox_fuzz_2852943083114743847"
+path = "src/cbox_fuzz_2852943083114743847.rs"
+
+[dependencies]
+cbox = { path = "../../../../deepSURF/dataset/erasan_crates/cbox-0.3.0" }
+global_data = { path = "../../../../deepSURF/code/global_data" }

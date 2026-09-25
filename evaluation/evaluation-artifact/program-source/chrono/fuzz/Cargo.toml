@@ -1,0 +1,28 @@
+
+[package]
+name = "chrono-fuzz"
+version = "0.0.0"
+authors = ["David Korczynski <david@adalogics.com>"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+
+
+[dependencies.chrono]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fuzz_reader"
+path = "fuzz_targets/fuzz_reader.rs"
+
+[[bin]]
+name = "fuzz-target"
+path = "fuzz_targets/fuzz_target.rs"
